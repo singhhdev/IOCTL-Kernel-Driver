@@ -1,0 +1,39 @@
+﻿  Building 'KernelDriver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\KernelDriver.inf
+  Stamping [Version] section with DriverVer=01/04/2023,1.28.16.918
+  entry.c
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\structs.h(41,3): warning C4201: nonstandard extension used: nameless struct/union
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\structs.h(46,3): warning C4201: nonstandard extension used: nameless struct/union
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(63,53): warning C4047: '=': 'LONGLONG' differs in levels of indirection from 'PVOID'
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(81,41): warning C4022: 'ReadPhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(86,37): warning C4022: 'ReadPhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(95,36): warning C4022: 'ReadPhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(104,40): warning C4022: 'ReadPhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(119,46): warning C4022: 'PsLookupProcessByProcessId': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(134,31): warning C4022: 'ReadPhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(152,38): warning C4047: '=': 'LONGLONG' differs in levels of indirection from 'PVOID'
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(171,46): warning C4022: 'PsLookupProcessByProcessId': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(186,32): warning C4022: 'WritePhysicalAddress': pointer mismatch for actual parameter 1
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\memory.h(209,51): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\entry.c(77,12): warning C4047: 'initializing': 'uint64_t' differs in levels of indirection from 'PVOID'
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\entry.c(136,11): warning C4101: 'status': unreferenced local variable
+C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\KernelDriver\entry.c(148): warning C4716: 'UnloadDriver': must return a value
+  KernelDriver.vcxproj -> C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\x64\Release\KernelDriver.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\x64\Release\KernelDriver.sys
+  
+  Driver is 'Universal'.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\x64\Release\KernelDriver\kerneldriver.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\16026\Desktop\release\Kernel Driver\KernelDriver\x64\Release\KernelDriver\kerneldriver.cat
+  

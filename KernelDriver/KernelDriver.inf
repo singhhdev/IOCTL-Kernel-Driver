@@ -1,0 +1,88 @@
+;
+; KernelDriver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USBDevice
+ClassGuid={88BAE032-5A81-49f0-BC3D-A4FF138216D6}
+Provider=%ManufacturerName%
+CatalogFile=KernelDriver.cat
+DriverVer=
+PnpLockDown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+KernelDriver_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KernelDriver.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%KernelDriver.DeviceDesc%=KernelDriver_Device, USB\VID_vvvv&PID_pppp
+
+[KernelDriver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KernelDriver.sys
+
+[KernelDriver_Device.NT.HW]
+AddReg=KernelDriver_AddReg
+
+[KernelDriver_AddReg]
+; By default, USBDevice class uses iProduct descriptor to name the device in
+; Device Manager on Windows 8 and higher.
+; Uncomment for this device to use %DeviceName% on Windows 8 and higher:
+;HKR,,FriendlyName,,%KernelDriver.DeviceDesc%
+
+;-------------- Service installation
+[KernelDriver_Device.NT.Services]
+AddService = KernelDriver,%SPSVCINST_ASSOCSERVICE%, KernelDriver_Service_Inst
+
+; -------------- KernelDriver driver install sections
+[KernelDriver_Service_Inst]
+DisplayName    = %KernelDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KernelDriver.sys
+
+;
+;--- KernelDriver_Device Coinstaller installation ------
+;
+
+[KernelDriver_Device.NT.CoInstallers]
+AddReg=KernelDriver_Device_CoInstaller_AddReg
+CopyFiles=KernelDriver_Device_CoInstaller_CopyFiles
+
+[KernelDriver_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[KernelDriver_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[KernelDriver_Device.NT.Wdf]
+KmdfService =  KernelDriver, KernelDriver_wdfsect
+[KernelDriver_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Universal Serial Bus devices"
+DiskName = "KernelDriver Installation Disk"
+KernelDriver.DeviceDesc = "KernelDriver Device"
+KernelDriver.SVCDESC = "KernelDriver Service"
+REG_MULTI_SZ = 0x00010000
